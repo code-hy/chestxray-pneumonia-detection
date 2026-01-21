@@ -1,2 +1,10 @@
 /.venv
 /notebook.ipynb.txt
+__pycache__/
+*.pyc
+models/
+data/chest_xray/
+.env
+.kaggle/
+.DS_Store
+data/*.zip
