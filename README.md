@@ -130,3 +130,10 @@ See `notebook.ipynb` for detailed confusion matrices and performance metrics. Th
 <img width="695" height="636" alt="image" src="https://github.com/user-attachments/assets/1ee8b9e8-34f5-479a-8016-daf79352c0a8" />
 
 <img width="638" height="684" alt="image" src="https://github.com/user-attachments/assets/bd8a3d10-687a-4346-8f8f-bee32bfec11a" />
+
+
+### Screenshots of Using Docker run and localhost:5000
+
+<img width="1839" height="983" alt="image" src="https://github.com/user-attachments/assets/dca256cf-d8e7-4ec4-af20-9efc9d164774" />
+
+<img width="1795" height="1042" alt="image" src="https://github.com/user-attachments/assets/b8701dde-d077-4da1-9a64-a438bfceac85" />
