@@ -124,3 +124,9 @@ The API is now available at `http://localhost:5000`.
 
 ## 📊 Results and Evaluation
 See `notebook.ipynb` for detailed confusion matrices and performance metrics. The PyTorch ResNet18 model typically achieves >90% recall on Pneumonia cases.
+
+### Screenshots of Predictions using test_form.html
+
+<img width="695" height="636" alt="image" src="https://github.com/user-attachments/assets/1ee8b9e8-34f5-479a-8016-daf79352c0a8" />
+
+<img width="638" height="684" alt="image" src="https://github.com/user-attachments/assets/bd8a3d10-687a-4346-8f8f-bee32bfec11a" />
