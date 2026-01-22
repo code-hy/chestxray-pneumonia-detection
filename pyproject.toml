@@ -1,0 +1,37 @@
+[project]
+name = "chestx-pneumodetect"
+version = "0.1.0"
+description = "Pneumonia detection from chest X-rays using deep learning"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0",
+    "torchvision",
+    "tensorflow>=2.12",
+    "fastapi",
+    "uvicorn[standard]",
+    "pillow",
+    "matplotlib",
+    "seaborn",
+    "scikit-learn",
+    "numpy",
+    "pandas",
+    "kaggle",
+    "jupyter",
+    "python-multipart"
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+# Don't auto-discover packages - this is just a script project
+py-modules = []
+
+[tool.setuptools.packages.find]
+# Exclude data folders and virtual environments from package discovery
+where = ["."]
+exclude = ["data*", "custom_env*", "tests*", ".venv*", "*.egg-info"]
+
+[tool.uv]
+# Optional: lock file management

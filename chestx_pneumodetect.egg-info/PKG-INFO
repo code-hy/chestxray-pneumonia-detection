@@ -1,0 +1,19 @@
+Metadata-Version: 2.4
+Name: chestx-pneumodetect
+Version: 0.1.0
+Summary: Pneumonia detection from chest X-rays using deep learning
+Requires-Python: >=3.10
+Requires-Dist: torch>=2.0
+Requires-Dist: torchvision
+Requires-Dist: tensorflow>=2.12
+Requires-Dist: fastapi
+Requires-Dist: uvicorn[standard]
+Requires-Dist: pillow
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: scikit-learn
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: kaggle
+Requires-Dist: jupyter
+Requires-Dist: python-multipart

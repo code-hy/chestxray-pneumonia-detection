@@ -1,0 +1,13 @@
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+torch>=2.0
+torchvision
+tensorflow>=2.12
+pillow
+matplotlib
+seaborn
+scikit-learn
+numpy
+pandas
+python-multipart
+pydantic>=2.0

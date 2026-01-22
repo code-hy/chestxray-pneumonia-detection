@@ -1,4 +1,6 @@
 /.venv
+/.venv_new
+
 /notebook.ipynb.txt
 __pycache__/
 *.pyc

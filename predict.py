@@ -1,5 +1,6 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware 
 from PIL import Image
 import torch
 import torchvision.transforms as T
@@ -7,6 +8,13 @@ import io
 import os
 
 app = FastAPI(title="ChestX-PneumoDetect API", description="Pneumonia detection from chest X-rays")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 # Load model
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

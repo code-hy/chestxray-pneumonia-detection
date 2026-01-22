@@ -1,0 +1,14 @@
+torch>=2.0
+torchvision
+tensorflow>=2.12
+fastapi
+uvicorn[standard]
+pillow
+matplotlib
+seaborn
+scikit-learn
+numpy
+pandas
+kaggle
+jupyter
+python-multipart

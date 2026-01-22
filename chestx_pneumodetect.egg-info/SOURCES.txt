@@ -1,0 +1,7 @@
+README.md
+pyproject.toml
+chestx_pneumodetect.egg-info/PKG-INFO
+chestx_pneumodetect.egg-info/SOURCES.txt
+chestx_pneumodetect.egg-info/dependency_links.txt
+chestx_pneumodetect.egg-info/requires.txt
+chestx_pneumodetect.egg-info/top_level.txt

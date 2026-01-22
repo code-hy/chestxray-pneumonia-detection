@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test Pneumonia Detection API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .normal {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .pneumonia {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .loading {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🩺 ChestX-PneumoDetect</h1>
+        <p>Upload a chest X-ray image to check for pneumonia</p>
+
+        <form id="uploadForm">
+            <input type="file" id="imageInput" accept="image/*" required
+                style="margin: 10px 0; padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%;">
+            <button type="submit"
+                style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                🔍 Analyze Image
+            </button>
+        </form>
+
+        <div id="result"></div>
+
+        <div style="margin-top: 30px; font-size: 12px; color: #666;">
+            <strong>Note:</strong> This is a demonstration tool. For medical diagnosis, consult a healthcare
+            professional.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const fileInput = document.getElementById('imageInput');
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.className = 'result loading';
+            resultDiv.innerHTML = '<p>🔄 Analyzing image... Please wait.</p>';
+
+            try {
+                // Use localhost:5000 for local testing
+                const response = await fetch('http://localhost:5000/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                const normalProb = (data.prediction.normal * 100).toFixed(1);
+                const pneumoniaProb = (data.prediction.pneumonia * 100).toFixed(1);
+
+                let diagnosisClass, diagnosisText, emoji;
+
+                if (data.prediction.pneumonia > 0.5) {
+                    diagnosisClass = 'pneumonia';
+                    diagnosisText = 'PNEUMONIA DETECTED';
+                    emoji = '⚠️';
+                } else {
+                    diagnosisClass = 'normal';
+                    diagnosisText = 'NORMAL';
+                    emoji = '✅';
+                }
+
+                resultDiv.className = `result ${diagnosisClass}`;
+                resultDiv.innerHTML = `
+                    <h3>${emoji} Analysis Results</h3>
+                    <p><strong>File:</strong> ${data.filename}</p>
+                    <hr>
+                    <p><strong>Normal:</strong> ${normalProb}%</p>
+                    <p><strong>Pneumonia:</strong> ${pneumoniaProb}%</p>
+                    <hr>
+                    <h2>${diagnosisText}</h2>
+                    <p>Confidence: ${Math.max(normalProb, pneumoniaProb)}%</p>
+                `;
+
+            } catch (error) {
+                resultDiv.className = 'result pneumonia';
+                resultDiv.innerHTML = `
+                    <h3>❌ Error</h3>
+                    <p><strong>${error.message}</strong></p>
+                    <p>Possible issues:</p>
+                    <ul>
+                        <li>Make sure the API server is running</li>
+                        <li>Check that you're using <code>http://localhost:5000</code></li>
+                        <li>Try a different browser or disable CORS restrictions</li>
+                    </ul>
+                    <p>To run the server, open terminal and type:</p>
+                    <code>python -m uvicorn predict:app --host 0.0.0.0 --port 5000</code>
+                `;
+                console.error('Error details:', error);
+            }
+        });
+    </script>
+</body>
+
+</html>
