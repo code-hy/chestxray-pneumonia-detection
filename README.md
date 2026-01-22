@@ -63,8 +63,17 @@ You need a Kaggle API token (`kaggle.json`).
 # Windows (Git Bash) or Linux/Mac
 bash download_data.sh
 ```
+### 5. Exploratory Data Analysis
 
-### 5. Training (Optional)
+Run the notebook.ipynb in google colab, or kaggle, or on vs-code.  When running in vs-code, ensure that the environment includes jupyter 
+
+Distribution plotted:
+
+<img width="1168" height="476" alt="image" src="https://github.com/user-attachments/assets/5e946f9b-3c43-4041-bd67-7aa4e504d23f" />
+
+
+
+### 6. Training (Optional)
 **⚠️ Note:** Training can take 2-3 hours depending on your hardware. 
 Pre-trained models are already provided in the `models/` directory.
 
@@ -77,7 +86,7 @@ This will:
 - Train a Keras MobileNetV2 model.
 - Save artifacts to `models/`.
 
-### 6. Run Prediction API (FastAPI)
+### 7. Run Prediction API (FastAPI)
 Start the local server:
 ```bash
 uvicorn predict:app --host 0.0.0.0 --port 5000 --reload
@@ -87,13 +96,13 @@ uvicorn predict:app --host 0.0.0.0 --port 5000 --reload
 
 ---
 
-### 7. Run using test_form.html (Optional)
+### 8. Run using test_form.html (Optional)
 
 Open `test_form.html` in a web browser to test the API interactively.
 and then upload an X-ray image to test the API.
 
 ---
-## 🐳 Docker Deployment
+### 9. 🐳 Docker Deployment
 
 ### 1. Build the Docker Image
 Ensure you are in the project root (where `Dockerfile` is located):
@@ -109,7 +118,7 @@ The API is now available at `http://localhost:5000`.
 
 ---
 
-## ☁️ Deploy to Render
+### 10. ☁️ Deploy to Render
 
 1.  **Push to GitHub**: Ensure your code is in a GitHub repository.
 2.  **Create New Web Service** on [Render](https://render.com/).
